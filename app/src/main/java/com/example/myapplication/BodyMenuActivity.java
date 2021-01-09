@@ -2,9 +2,12 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.myapplication.body.BodyHealthBloodPressure;
 
 public class BodyMenuActivity extends AppCompatActivity {
 
@@ -14,9 +17,49 @@ public class BodyMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_body_menu);
 
         configureGoalsButton();
+        configureBodyHealthExerciseButton();
+        configureBodyHealthBloodPressureButton();
     }
 
 
+    //go to weight
+    private void configureBodyHealthWeight() {
+        Button bodyHealthWeightButton = (Button) findViewById(R.id.weightButton);
+        bodyHealthWeightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BodyMenuActivity.this, BodyHealthWeightActivity.class));
+            }
+        });
+    }
+
+
+    //go to exercise
+    private void configureBodyHealthExerciseButton() {
+        Button bodyHealthExerciseButton = (Button) findViewById(R.id.exerciseButton);
+        bodyHealthExerciseButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BodyMenuActivity.this, BodyHealthExerciseActivity.class));
+            }
+        });
+    }
+
+    //go to blood pressure
+    private void configureBodyHealthBloodPressureButton() {
+        Button bodyHealthBloodPressureButton = (Button) findViewById(R.id.bloodButton);
+        bodyHealthBloodPressureButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BodyMenuActivity.this, BodyHealthBloodActivity.class));
+            }
+        });
+    }
+
+
+    //goes back
     private void configureGoalsButton() {
         Button goalsButton = (Button) findViewById(R.id.goalsButton);
         goalsButton.setOnClickListener(new View.OnClickListener() {
