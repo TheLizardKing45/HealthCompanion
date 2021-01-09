@@ -11,8 +11,13 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
-        <activity android:name=".BodyMenuActivity"></activity>
-        <activity android:name=".GoalsMenuActivity">
+        <activity android:name=".activity.mental.MentalHealthMoodActivity"></activity>
+        <activity android:name=".activity.body.BodyHealthWeightActivity" />
+        <activity android:name=".activity.body.BodyHealthBloodActivity" />
+        <activity android:name=".activity.body.BodyHealthExerciseActivity" />
+        <activity android:name=".activity.mental.MentalMenuActivity" />
+        <activity android:name=".activity.body.BodyMenuActivity" />
+        <activity android:name=".activity.GoalsMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
