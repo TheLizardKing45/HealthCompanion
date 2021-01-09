@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activity.body;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,14 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class BodyHealthWeightActivity extends AppCompatActivity {
+import com.example.myapplication.R;
+
+public class BodyHealthBloodActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_body_health_weight);
+        setContentView(R.layout.activity_body_health_blood);
         configureBodyHealthMenuButton();
     }
+
 
 
     //goes back
