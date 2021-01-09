@@ -19,6 +19,7 @@ public class BodyMenuActivity extends AppCompatActivity {
         configureGoalsButton();
         configureBodyHealthExerciseButton();
         configureBodyHealthBloodPressureButton();
+        configureBodyHealthWeight();
     }
 
 
