@@ -1,0 +1,4 @@
+#Sat Jan 09 14:56:02 PST 2021
+base.0=C\:\\Users\\bretl\\Desktop\\Important files\\HealthCompanion\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
