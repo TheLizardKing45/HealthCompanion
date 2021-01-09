@@ -23,8 +23,13 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication" >
-        <activity android:name="com.example.myapplication.BodyMenuActivity" />
-        <activity android:name="com.example.myapplication.GoalsMenuActivity" >
+        <activity android:name="com.example.myapplication.activity.mental.MentalHealthMoodActivity" />
+        <activity android:name="com.example.myapplication.activity.body.BodyHealthWeightActivity" />
+        <activity android:name="com.example.myapplication.activity.body.BodyHealthBloodActivity" />
+        <activity android:name="com.example.myapplication.activity.body.BodyHealthExerciseActivity" />
+        <activity android:name="com.example.myapplication.activity.mental.MentalMenuActivity" />
+        <activity android:name="com.example.myapplication.activity.body.BodyMenuActivity" />
+        <activity android:name="com.example.myapplication.activity.GoalsMenuActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

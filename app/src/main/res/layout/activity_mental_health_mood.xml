@@ -6,4 +6,11 @@
         android:layout_height="match_parent"
         tools:context=".activity.mental.MentalHealthMoodActivity">
 
+    <Button
+        android:id="@+id/mentalMenuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Mental Menu"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="518dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
