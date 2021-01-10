@@ -1,4 +1,4 @@
-#Sat Jan 09 15:42:13 PST 2021
-base.0=C\:\\Users\\bretl\\Desktop\\Important files\\HealthCompanion\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Sat Jan 09 19:08:54 PST 2021
+base.0=C\:\\Users\\wilpg\\OneDrive - The University Of British Columbia\\UBC\\Year 2\\HealthCompanion\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

@@ -7,14 +7,40 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.myapplication.R;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class BodyHealthBloodActivity extends AppCompatActivity {
+
+    private LineGraphSeries<DataPoint> series1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body_health_blood);
         configureBodyHealthMenuButton();
+        configureBloodGraph();
+    }
+
+
+    //renders weight
+    private void configureBloodGraph() {
+        double x,y;
+        x = 0;
+
+        GraphView graph = findViewById(R.id.bloodGraph);
+        series1 = new LineGraphSeries<>();
+        int dataPoints = 500;
+
+        for (int i = 0; i < dataPoints; i++) {
+            x = x + 0.1;
+            y = Math.sin(x);
+            series1.appendData(new DataPoint(x,y), true, 100);
+        }
+        graph.addSeries(series1);
+
+
     }
 
 

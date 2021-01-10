@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\bretl\\Desktop\\Important files\\HealthCompanion\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-small-v4\\values-small-v4.xml",
+            "outputFile": "C:\\Users\\wilpg\\OneDrive - The University Of British Columbia\\UBC\\Year 2\\HealthCompanion\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-small-v4\\values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\bretl\\.gradle\\caches\\transforms-2\\files-2.1\\033fa273db51aa87cae83056de67d807\\material-1.1.0\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "C:\\Users\\wilpg\\.gradle\\caches\\transforms-2\\files-2.1\\033fa273db51aa87cae83056de67d807\\material-1.1.0\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
