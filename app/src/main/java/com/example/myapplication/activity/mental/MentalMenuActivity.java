@@ -1,14 +1,13 @@
 package com.example.myapplication.activity.mental;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myapplication.R;
-import com.example.myapplication.activity.body.BodyHealthBloodActivity;
-import com.example.myapplication.activity.body.BodyMenuActivity;
 
 public class MentalMenuActivity extends AppCompatActivity {
 
@@ -42,8 +41,6 @@ public class MentalMenuActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
 
 }
