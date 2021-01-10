@@ -3,22 +3,33 @@ package com.example.myapplication.activity.mental;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.EditText;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.body.Weight;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MentalHealthMoodActivity extends AppCompatActivity {
 
+    private static final String FILE_NAME = "moods.txt";
     private ArrayList<Mood> moodHistory;
     private LineGraphSeries<DataPoint> series1;
+
+    public MentalHealthMoodActivity() {
+        moodHistory = new ArrayList<>();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +37,93 @@ public class MentalHealthMoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mental_health_mood);
         configureMentalHealthButton();
         configureMentalGraph();
+        configureMoodInput();
+
     }
 
+    private void save() {
+        FileOutputStream fos = null;
+        ObjectOutputStream out = null;
+        try {
+            fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
+            out = new ObjectOutputStream(fos);
+            out.writeObject(moodHistory);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
+    private void load() {
+        FileInputStream fis = null;
+        ObjectInputStream in = null;
+        try {
+            fis = openFileInput(FILE_NAME);
+            in  = new ObjectInputStream(fis);
+            moodHistory = (ArrayList<Mood>) in.readObject();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void addMood(double lb) {
+        String currentDate = Calendar.getInstance().getTime().toLocaleString();
+        //String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
+        moodHistory.add(new Mood(currentDate,(int) lb));
+
+    }
+
+    private void configureMoodInput() {
+        EditText moodInput = (EditText) findViewById(R.id.weightInput);
+        Button submitButton = (Button) findViewById(R.id.weightSubmit);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                addMood(Double.parseDouble(moodInput.getText().toString()));
+                save();
+                finish();
+            }
+        });
+    }
+
+
+    //save
+
+    //load
 
     //renders graph
     private void configureMentalGraph() {
@@ -58,12 +154,6 @@ public class MentalHealthMoodActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
-
-
-    // add mood response to the list of
-    public void addMood(Mood m) {
-        moodHistory.add(m);
     }
 
     // remove mood at given index

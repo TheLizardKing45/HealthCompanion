@@ -12,15 +12,22 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class BodyHealthWeightActivity extends AppCompatActivity {
 
 
+    private static final String FILE_NAME = "weights.txt";
     private LineGraphSeries<DataPoint> series1;
-    private ArrayList<Double> weights;
+    private ArrayList<Weight> weights;
 
 
     public BodyHealthWeightActivity() {
@@ -30,30 +37,78 @@ public class BodyHealthWeightActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        load();
         setContentView(R.layout.activity_body_health_weight);
         configureBodyHealthMenuButton();
         configureWeightGraph();
         configureWeightInput();
-    }
-
-    private void save(View v) {
 
     }
 
-    private void load(View v) {
+    private void save() {
+        FileOutputStream fos = null;
+        ObjectOutputStream out = null;
+        try {
+            fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
+            out = new ObjectOutputStream(fos);
+            out.writeObject(weights);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
 
+    private void load() {
+        FileInputStream fis = null;
+        ObjectInputStream in = null;
+        try {
+            fis = openFileInput(FILE_NAME);
+            in  = new ObjectInputStream(fis);
+            weights = (ArrayList<Weight>) in.readObject();
 
+        } catch (IOException | ClassNotFoundException e) {
 
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     public void addWeight(double lb) {
-        weights.add(lb);
+        String currentDate = Calendar.getInstance().getTime().toLocaleString();
+        //String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
+        weights.add(new Weight(currentDate,lb));
 
     }
-
-
-
 
     private void configureWeightInput() {
         EditText weightInput = (EditText) findViewById(R.id.weightInput);
@@ -63,6 +118,7 @@ public class BodyHealthWeightActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addWeight(Double.parseDouble(weightInput.getText().toString()));
+                save();
                 finish();
             }
         });

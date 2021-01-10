@@ -32,35 +32,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            tools:layout_editor_absoluteY="377dp"
-            tools:layout_editor_absoluteX="150dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseGraph" />
 
     <Button
             android:text="Start"
             android:onClick="startChronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="161dp"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
-            android:id="@+id/button3" />
+            android:id="@+id/button3"
+            android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@+id/chronometer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     <Button
             android:text="Pause"
             android:onClick="pauseChronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="161dp"
+            android:id="@+id/button2"
             app:layout_constraintBottom_toTopOf="@+id/button"
-            android:id="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/button3"
+            app:layout_constraintVertical_bias="0.465"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     <Button
             android:text="Reset"
             android:onClick="resetChronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="161dp"
+            android:id="@+id/button"
             app:layout_constraintBottom_toTopOf="@+id/bodyHealthMenuButton"
-            android:id="@+id/button" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+            android:text="Submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/exerciseSubmit"
+            tools:layout_editor_absoluteY="488dp"
+            tools:layout_editor_absoluteX="315dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
