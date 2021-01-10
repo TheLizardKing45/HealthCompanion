@@ -22,4 +22,26 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/weightInput"
+            app:layout_constraintBottom_toTopOf="@+id/bodyHealthMenuButton"
+            app:layout_constraintTop_toBottomOf="@+id/weightGraph"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+            android:text="Submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/weightSubmit"
+            tools:layout_editor_absoluteY="606dp"
+            app:layout_constraintStart_toEndOf="@+id/weightInput" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

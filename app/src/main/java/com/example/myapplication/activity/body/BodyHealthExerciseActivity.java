@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -20,6 +19,7 @@ public class BodyHealthExerciseActivity extends AppCompatActivity {
     private long pauseOffset;
     private boolean running;
     private LineGraphSeries<DataPoint> series1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +53,6 @@ public class BodyHealthExerciseActivity extends AppCompatActivity {
         chronometer.setBase(SystemClock.elapsedRealtime());
         pauseOffset = 0;
     }
-
-
-
 
     //renders weight
     private void configureWeightGraph() {

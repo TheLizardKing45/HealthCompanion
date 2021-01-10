@@ -1747,6 +1747,8 @@ id view_offset_helper
 id visible
 id weightButton
 id weightGraph
+id weightInput
+id weightSubmit
 id wide
 id withText
 id wrap
