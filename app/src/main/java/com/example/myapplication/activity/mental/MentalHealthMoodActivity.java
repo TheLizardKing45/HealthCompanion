@@ -24,6 +24,7 @@ public class MentalHealthMoodActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mental_health_mood);
+        getSupportActionBar().setTitle("Mood (temporary screen)");
         configureMentalHealthButton();
         configureMentalGraph();
     }

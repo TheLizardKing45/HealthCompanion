@@ -31,6 +31,7 @@ public class BodyHealthWeightActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body_health_weight);
+        getSupportActionBar().setTitle("Weight");
         configureBodyHealthMenuButton();
         configureWeightGraph();
         configureWeightInput();

@@ -19,6 +19,7 @@ public class BodyHealthBloodActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body_health_blood);
+        getSupportActionBar().setTitle("Blood Pressure");
         configureBodyHealthMenuButton();
         configureBloodGraph();
     }
