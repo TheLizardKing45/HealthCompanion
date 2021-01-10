@@ -16,6 +16,7 @@ public class MentalMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mental_menu);
+        getSupportActionBar().setTitle("Menu (temporary screen)");
         configureGoalsButton();
         configureMentalHealthMoodButton();
     }

@@ -24,6 +24,7 @@ public class BodyHealthExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body_health_exercise);
+        getSupportActionBar().setTitle("Exercise");
         configureBodyHealthMenuButton();
         configureWeightGraph();
         configureChronometer();

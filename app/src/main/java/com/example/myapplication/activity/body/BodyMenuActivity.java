@@ -15,7 +15,7 @@ public class BodyMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body_menu);
-
+        getSupportActionBar().setTitle("Menu");
         configureGoalsButton();
         configureBodyHealthExerciseButton();
         configureBodyHealthBloodPressureButton();
