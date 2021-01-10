@@ -2,10 +2,12 @@ package com.example.myapplication.activity.mental;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 
 import com.example.myapplication.R;
 import com.example.myapplication.activity.body.Weight;
@@ -26,9 +28,11 @@ public class MentalHealthMoodActivity extends AppCompatActivity {
     private static final String FILE_NAME = "moods.txt";
     private ArrayList<Mood> moodHistory;
     private LineGraphSeries<DataPoint> series1;
+    private float currRating;
 
     public MentalHealthMoodActivity() {
         moodHistory = new ArrayList<>();
+        currRating = 0;
     }
 
     @Override
@@ -104,19 +108,16 @@ public class MentalHealthMoodActivity extends AppCompatActivity {
         //String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
         moodHistory.add(new Mood(currentDate,(int) lb));
+        save();
 
     }
 
     private void configureMoodInput() {
-        EditText moodInput = (EditText) findViewById(R.id.weightInput);
-        Button submitButton = (Button) findViewById(R.id.weightSubmit);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-
+        RatingBar moodInput = (RatingBar) findViewById(R.id.ratingBar);
+        moodInput.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
-            public void onClick(View v) {
-                addMood(Double.parseDouble(moodInput.getText().toString()));
-                save();
-                finish();
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                currRating = rating;
             }
         });
     }
@@ -152,6 +153,9 @@ public class MentalHealthMoodActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                if (!(currRating  == 0.0)) {
+                    addMood((double) currRating);
+                }
                 finish();
             }
         });
