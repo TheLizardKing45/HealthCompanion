@@ -43,5 +43,7 @@ com/example/myapplication/mental/MentalHealthPrescription.java
 com/example/myapplication/activity/GoalsMenuActivity.java
  com.example.myapplication.activity.GoalsMenuActivity
  com.example.myapplication.activity.GoalsMenuActivity$1
+ com.example.myapplication.activity.GoalsMenuActivity$1$1
+ com.example.myapplication.activity.GoalsMenuActivity$1$2
  com.example.myapplication.activity.GoalsMenuActivity$2
  com.example.myapplication.activity.GoalsMenuActivity$3

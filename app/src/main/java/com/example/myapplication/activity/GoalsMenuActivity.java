@@ -1,7 +1,9 @@
 package com.example.myapplication.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -49,8 +51,25 @@ public class GoalsMenuActivity extends AppCompatActivity {
         todoItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                items.remove(position);
-                itemsAdapter.notifyDataSetChanged();
+                AlertDialog.Builder alert = new AlertDialog.Builder(GoalsMenuActivity.this);
+                alert.setTitle("Delete task?");
+                alert.setMessage("Are you sure you want to delete this task?");
+                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        System.out.println("test");
+                        items.remove(position);
+                        dialog.dismiss();
+                        itemsAdapter.notifyDataSetChanged();
+                    }
+                });
+                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alert.show();
                 return true;
             }
         });
