@@ -1,6 +1,6 @@
 # HealthCompanion
 
-### Submission for the nWHacks 2021 Hackathon
+### Project made during the nWHacks 2021 Hackathon
 
 This is an Android application that acts a companion app for users to
 monitor their health in several different ways.
