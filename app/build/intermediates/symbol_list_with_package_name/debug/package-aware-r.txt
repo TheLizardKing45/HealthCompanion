@@ -1509,6 +1509,9 @@ id bloodGraph
 id bodyButton
 id bodyHealthMenuButton
 id bottom
+id button
+id button2
+id button3
 id buttonPanel
 id cancel_action
 id cancel_button
@@ -1553,6 +1556,7 @@ id end_padder
 id enterAlways
 id enterAlwaysCollapsed
 id exerciseButton
+id exerciseGraph
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
