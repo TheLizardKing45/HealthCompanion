@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class MentalHealthMoodActivity extends AppCompatActivity {
 
-    private ArrayList<Integer> moodHistory;
+    private ArrayList<Mood> moodHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class MentalHealthMoodActivity extends AppCompatActivity {
 
 
     // add mood response to the list of
-    public void addMood(Integer m) {
+    public void addMood(Mood m) {
         moodHistory.add(m);
     }
 
@@ -44,13 +44,4 @@ public class MentalHealthMoodActivity extends AppCompatActivity {
     }
 
 
-    public void presentGraph() {
-
-    }
-
-
-    // sends a push notification to phone
-    public void remind() {
-
-    }
 }
