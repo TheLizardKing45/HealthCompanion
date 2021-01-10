@@ -34,6 +34,7 @@ public class MentalHealthMoodActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        load();
         setContentView(R.layout.activity_mental_health_mood);
         configureMentalHealthButton();
         configureMentalGraph();
