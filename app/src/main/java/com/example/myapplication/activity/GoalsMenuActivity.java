@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -37,12 +39,21 @@ public class GoalsMenuActivity extends AppCompatActivity {
         items.add("test 3");
         items.add("test 4");
         items.add("test 5");
-        items.add("test 5");
-        items.add("test 5");
-        items.add("test 5");
 
+        configureListViewListener();
         configureBodyButton();
         configureMentalButton();
+    }
+
+    private void configureListViewListener() {
+        todoItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                items.remove(position);
+                itemsAdapter.notifyDataSetChanged();
+                return true;
+            }
+        });
     }
 
 
