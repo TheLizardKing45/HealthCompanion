@@ -19,7 +19,7 @@ public class GoalsMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         configureBodyButton();
-        configureMentalButton(); 
+        configureMentalButton();
     }
 
 
