@@ -1,18 +1,26 @@
 package com.example.myapplication.activity.body;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
-import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.OnDataPointTapListener;
+import com.jjoe64.graphview.series.Series;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -48,10 +56,10 @@ public class BodyHealthExerciseActivity extends AppCompatActivity {
         configureChronometer();
         configureExerciseInput();
     }
+
     public void addExerciseDuration() {
         String currentDate = Calendar.getInstance().getTime().toLocaleString();
-        //String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-        exerciseSessions.add(new Exercise(currentDate,timeElapsed));
+        exerciseSessions.add(new Exercise(currentDate, timeElapsed));
 
     }
 
@@ -63,13 +71,13 @@ public class BodyHealthExerciseActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
                 addExerciseDuration();
                 save();
                 finish();
             }
         });
     }
-
 
 
     private void save() {
@@ -106,7 +114,7 @@ public class BodyHealthExerciseActivity extends AppCompatActivity {
         ObjectInputStream in = null;
         try {
             fis = openFileInput(FILE_NAME);
-            in  = new ObjectInputStream(fis);
+            in = new ObjectInputStream(fis);
             exerciseSessions = (ArrayList<Exercise>) in.readObject();
 
         } catch (IOException | ClassNotFoundException e) {
@@ -130,7 +138,6 @@ public class BodyHealthExerciseActivity extends AppCompatActivity {
     }
 
 
-
     private void configureChronometer() {
         chronometer = findViewById(R.id.chronometer);
         chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
@@ -142,7 +149,7 @@ public class BodyHealthExerciseActivity extends AppCompatActivity {
     }
 
     public void startChronometer(View v) {
-        if(!running) {
+        if (!running) {
             chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
             chronometer.start();
             running = true;
@@ -164,23 +171,52 @@ public class BodyHealthExerciseActivity extends AppCompatActivity {
 
     //renders weight
     private void configureWeightGraph() {
-        double x,y;
-        x = 0;
 
         GraphView graph = findViewById(R.id.exerciseGraph);
-        series1 = new LineGraphSeries<>();
-        int dataPoints = 500;
+        GridLabelRenderer renderer = graph.getGridLabelRenderer();
+        renderer.setGridStyle(GridLabelRenderer.GridStyle.NONE);
 
-        for (int i = 0; i < dataPoints; i++) {
-            x = x + 0.1;
-            y = Math.sin(x);
-            series1.appendData(new DataPoint(x,y), true, 100);
+        Viewport viewport = graph.getViewport();
+        viewport.setYAxisBoundsManual(true);
+        viewport.setMaxY(200);
+        viewport.setScalableY(true);
+
+
+        series1 = new LineGraphSeries<>();
+        series1.setTitle("Exercise Duration History");
+        series1.setDrawDataPoints(true);
+        series1.setThickness(8);
+
+
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(10);
+        paint.setColor(Color.CYAN);
+        series1.setCustomPaint(paint);
+
+        for (int x = 0; x < exerciseSessions.size(); x ++) {
+            series1.appendData(new DataPoint(x + 1, exerciseSessions.get(x).getDuration()*0.001), true, 100);
         }
+        series1.setOnDataPointTapListener(new OnDataPointTapListener() {
+            @Override
+            public void onTap(Series series, DataPointInterface dataPoint) {
+                Toast.makeText(BodyHealthExerciseActivity.this, "Taken on " + exerciseSessions.get((int)dataPoint.getX() - 1).getDate(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         graph.addSeries(series1);
 
-
+        graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
+            @Override
+            public String formatLabel(double value, boolean isValueX) {
+                if (isValueX) {
+                    return super.formatLabel(value, isValueX);
+                } else {
+                    return super.formatLabel(value, isValueX) + "sec";
+                }
+            }
+        });
     }
-
 
 
     //goes back

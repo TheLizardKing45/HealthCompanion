@@ -1,7 +1,5 @@
 package com.example.myapplication.activity.body;
 
-import android.widget.EditText;
-
 import java.io.Serializable;
 
 public class Exercise implements Serializable {

@@ -1,18 +1,16 @@
 package com.example.myapplication.activity;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.activity.body.BodyMenuActivity;
@@ -33,7 +31,7 @@ public class GoalsMenuActivity extends AppCompatActivity {
 
         todoItems = (ListView) findViewById(R.id.todoItems);
         items = new ArrayList<>();
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,items);
+        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
         todoItems.setAdapter(itemsAdapter);
 
         items.add("test 1");

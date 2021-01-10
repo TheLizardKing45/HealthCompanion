@@ -2,9 +2,6 @@ package com.example.myapplication.activity.mental;
 
 
 import java.io.Serializable;
-import java.security.Timestamp;
-import java.text.DateFormat;
-import java.util.Calendar;
 
 public class Mood implements Serializable {
     private int mood;
