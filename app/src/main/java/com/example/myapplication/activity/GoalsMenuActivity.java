@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toolbar;
 
@@ -48,8 +49,6 @@ public class GoalsMenuActivity extends AppCompatActivity {
         items.add("test 5");
 
         configureListViewListener();
-        configureBodyButton();
-        configureMentalButton();
         configureAddButton();
     }
 
@@ -61,7 +60,13 @@ public class GoalsMenuActivity extends AppCompatActivity {
     }
 
     private void configureAddButton() {
-
+        ImageButton addButton = (ImageButton) findViewById(R.id.addButton);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GoalsMenuActivity.this, AddGoalActivity.class));
+            }
+        });
     }
 
     private void configureListViewListener() {
@@ -95,27 +100,5 @@ public class GoalsMenuActivity extends AppCompatActivity {
             }
         });
         alert.show();
-    }
-
-
-    private void configureBodyButton() {
-        Button bodyButton = (Button) findViewById(R.id.bodyButton);
-        bodyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(GoalsMenuActivity.this, BodyMenuActivity.class));
-            }
-        });
-    }
-
-
-    private void configureMentalButton() {
-        Button mentalButton = (Button) findViewById(R.id.mentalButton);
-        mentalButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(GoalsMenuActivity.this, MentalMenuActivity.class));
-            }
-        });
     }
 }

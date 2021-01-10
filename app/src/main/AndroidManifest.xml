@@ -13,6 +13,7 @@
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".activity.mental.MentalHealthMoodActivity"></activity>
         <activity android:name=".activity.body.BodyHealthWeightActivity" />
+        <activity android:name=".activity.AddGoalActivity" />
         <activity android:name=".activity.body.BodyHealthBloodActivity" />
         <activity android:name=".activity.body.BodyHealthExerciseActivity" />
         <activity android:name=".activity.mental.MentalMenuActivity" />
