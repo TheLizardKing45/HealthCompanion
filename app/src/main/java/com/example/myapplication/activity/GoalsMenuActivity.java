@@ -64,7 +64,8 @@ public class GoalsMenuActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GoalsMenuActivity.this, AddGoalActivity.class));
+                int requestCode = 1;
+                startActivityForResult(new Intent(GoalsMenuActivity.this, AddGoalActivity.class), requestCode);
             }
         });
     }
@@ -77,7 +78,6 @@ public class GoalsMenuActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 
     private void createConfirmDeleteDialog(int position) {
