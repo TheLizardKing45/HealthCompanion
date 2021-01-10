@@ -9,6 +9,8 @@ com/example/myapplication/activity/mental/MentalHealthMoodActivity.java
  com.example.myapplication.activity.mental.MentalHealthMoodActivity$1
 com/example/myapplication/body/BodyHealthWeight.java
  com.example.myapplication.body.BodyHealthWeight
+com/example/myapplication/activity/mental/Mood.java
+ com.example.myapplication.activity.mental.Mood
 com/example/myapplication/activity/body/BodyMenuActivity.java
  com.example.myapplication.activity.body.BodyMenuActivity
  com.example.myapplication.activity.body.BodyMenuActivity$1
@@ -27,8 +29,6 @@ com/example/myapplication/activity/body/BodyHealthBloodActivity.java
  com.example.myapplication.activity.body.BodyHealthBloodActivity$1
 com/example/myapplication/body/BodyHealthBloodPressure.java
  com.example.myapplication.body.BodyHealthBloodPressure
-com/example/myapplication/activity/GoalsMenu.java
- com.example.myapplication.activity.GoalsMenu
 com/example/myapplication/BuildConfig.java
  com.example.myapplication.BuildConfig
 com/example/myapplication/body/BodyHealthPrescription.java
